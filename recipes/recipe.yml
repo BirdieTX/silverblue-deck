@@ -36,6 +36,8 @@ modules:
         packages:
           - old: upower
             new: terra-upower
+          - old: upower-libs
+            new: terra-upower-libs
           - old: wireplumber
             new: terra-wireplumber
           - old: xorg-x11-server-Xwayland
