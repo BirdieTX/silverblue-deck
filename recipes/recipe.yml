@@ -166,8 +166,14 @@ modules:
           - ublue-os/bazzite-multilib
           - ublue-os/packages
           - ublue-os/staging
+
   - type: script
     scripts:
       post.sh
+
+  - type: files
+    files:
+      - source: post
+        destination: /
 
   - type: signing
