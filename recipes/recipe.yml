@@ -36,8 +36,7 @@ modules:
         packages:
           - old: upower
             new: terra-upower
-          - old: upower-libs
-            new: terra-upower-libs
+            allow-erasing: true
           - old: wireplumber
             new: terra-wireplumber
           - old: xorg-x11-server-Xwayland
