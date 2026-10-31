@@ -39,6 +39,7 @@ modules:
             allow-erasing: true
           - old: wireplumber
             new: terra-wireplumber
+            allow-erasing: true
           - old: xorg-x11-server-Xwayland
             new: terra-xorg-x11-server-Xwayland
           - old: uresourced
