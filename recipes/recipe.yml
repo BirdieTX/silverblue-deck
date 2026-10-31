@@ -28,7 +28,7 @@ modules:
 
   - type: script
     scripts:
-      repos.sh
+      - repos.sh
 
   - type: dnf
     replace:
@@ -88,7 +88,7 @@ modules:
 
   - type: script
     scripts:
-      deck.sh
+      - deck.sh
 
   - type: systemd
     system:
@@ -169,7 +169,7 @@ modules:
 
   - type: script
     scripts:
-      post.sh
+      - post.sh
 
   - type: files
     files:
