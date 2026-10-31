@@ -22,6 +22,7 @@ modules:
           - ublue-os/bazzite-multilib
           - ublue-os/packages
           - ublue-os/staging
+          - ycollet/audinux
     install:
       packages:
         - terra-release-extras
@@ -57,10 +58,8 @@ modules:
         - gamescope-session-ogui-steam
         - hid-replay
         - inputplumber
-        - jq
         - jupiter-fan-control
         - jupiter-hw-support-btrfs
-        - lshw
         - newt
         - powerbuttond
         - python-crcmod
@@ -81,7 +80,6 @@ modules:
         - xorg-x11-server-Xvfb
         - xrandr
         - zenity
-        - zstd
 
   - type: files
     files:
