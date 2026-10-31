@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+# Steam launcher for the GNOME desktop on handhelds.
+# Adapted from Bazzite's bazzite-steam (Apache-2.0).
+# Bluebird keeps: the Steam bootstrap, the -steamdeck flag and extest.
+
+DECK_OPTION="-steamdeck"
+OOTB_DISABLE_UPDATER_OPTION=""
+
+# Put this file in place to start Steam without the Steam Deck flag
+if [[ -f "$HOME/.config/bluebird/disable_steamdeck_flag" ]]; then
+  DECK_OPTION=""
+fi
+
+if [[ ! -d "$HOME/.local/share/Steam" ]]; then
+  # Use the dummy updater only for the first Steam bootstrap
+  OOTB_DISABLE_UPDATER_OPTION="-testoobeupdater"
+  # Extract the bootstrap so that Steam can start the first time without a network
+  if [[ -f /usr/share/gamescope-session-plus/bootstrap_steam.tar.gz ]]; then
+    mkdir -p "$HOME/.local/share"
+    tar xf /usr/share/gamescope-session-plus/bootstrap_steam.tar.gz -C "$HOME/.local/share"
+  fi
+fi
+
+if [[ "$XDG_SESSION_TYPE" == "wayland" && -f /usr/lib/extest/libextest.so ]]; then
+  # extest replaces XTEST so that Steam Input can control the Wayland desktop
+  exec env LD_PRELOAD=/usr/lib/extest/libextest.so /usr/bin/steam $DECK_OPTION $OOTB_DISABLE_UPDATER_OPTION "$@"
+else
+  exec /usr/bin/steam $DECK_OPTION $OOTB_DISABLE_UPDATER_OPTION "$@"
+fi

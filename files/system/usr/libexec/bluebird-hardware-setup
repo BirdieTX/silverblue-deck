@@ -1,0 +1,127 @@
+#!/usr/bin/bash
+# Configures handheld services and kernel arguments for the current hardware.
+# Adapted from Bazzite's bazzite-hardware-setup (Apache-2.0).
+# Bluebird keeps the handheld parts only.
+# The script runs again when HWS_VER changes or when the hardware changes.
+
+HWS_VER=1
+STATE_DIR="/etc/bluebird"
+HWS_VER_FILE="${STATE_DIR}/hws_version"
+SYS_ID_FILE="${STATE_DIR}/hws_sys_id"
+
+SYS_ID="$(/usr/libexec/hwsupport/sysid)"
+
+if [[ "$(cat "$HWS_VER_FILE" 2>/dev/null)" == "$HWS_VER" && \
+      "$(cat "$SYS_ID_FILE" 2>/dev/null)" == "$SYS_ID" ]]; then
+  echo "Hardware setup already ran for version $HWS_VER on $SYS_ID, skipping"
+  exit 0
+fi
+
+KARGS=$(rpm-ostree kargs)
+NEEDED_KARGS=()
+
+echo "Current kargs: $KARGS"
+
+# Lets Steam and steamos-manager control GPU clocks (amdgpu overdrive bit 0x4000)
+if /usr/libexec/hwsupport/valve-hardware || \
+   /usr/libexec/hwsupport/non-valve-handheld-hardware || \
+   /usr/libexec/hwsupport/powerstation-htpc-hardware; then
+  if [[ ! $KARGS =~ "ppfeaturemask" && -r /sys/module/amdgpu/parameters/ppfeaturemask ]]; then
+    NEEDED_KARGS+=("--append-if-missing=$(printf 'amdgpu.ppfeaturemask=0x%x' "$(( $(cat /sys/module/amdgpu/parameters/ppfeaturemask) | 0x4000 ))")")
+  fi
+fi
+
+# These devices need the IOMMU on
+if /usr/libexec/hwsupport/valve-hardware || [[ ":83N0:83N1:83E1:ROG Ally RC71L:ROG Ally X RC72LA:" =~ ":$SYS_ID:" ]]; then
+  if [[ $KARGS =~ "amd_iommu" ]]; then
+    NEEDED_KARGS+=("--delete-if-present=amd_iommu=off")
+  fi
+fi
+
+# AOKZOE A1: fix the EDID
+if [[ ":AOKZOE A1 AR07:" =~ ":$SYS_ID:" && ! $KARGS =~ "drm.edid_firmware" ]]; then
+  NEEDED_KARGS+=("--append-if-missing=drm.edid_firmware=eDP-1:edid/aokzoea1ar07_edid.bin")
+fi
+
+# OneXFly F1: portrait panel mounted in landscape
+if [[ ":ONEXPLAYER F1:ONEXPLAYER F1 EVA-01:" =~ ":$SYS_ID:" ]]; then
+  NEEDED_KARGS+=("--append-if-missing=video=eDP-1:panel_orientation=left_side_up")
+  NEEDED_KARGS+=("--append-if-missing=plymouth.use-simpledrm=0")
+  NEEDED_KARGS+=("--append-if-missing=loglevel=0")
+fi
+
+# AYANEO Slide: prevents random reboots
+if [[ ":SLIDE:" =~ ":$SYS_ID:" && ! $KARGS =~ "acpi=strict" ]]; then
+  NEEDED_KARGS+=("--append-if-missing=acpi=strict")
+fi
+
+# Bluetooth controller stability
+if [[ ! $KARGS =~ "disable_ertm" ]]; then
+  NEEDED_KARGS+=("--append-if-missing=bluetooth.disable_ertm=1")
+fi
+
+# SERVICES
+if /usr/libexec/hwsupport/handheld-hardware || /usr/libexec/hwsupport/powerstation-htpc-hardware; then
+  echo "TDP-controlled hardware detected, masking tuned and PPD"
+  systemctl stop tuned-ppd.service tuned.service || true
+  systemctl mask tuned-ppd.service tuned.service
+
+  if /usr/libexec/hwsupport/valve-hardware; then
+    echo "Valve handheld detected: masking powerstation and inputplumber, enabling fan control and vpower"
+    systemctl stop powerstation.service inputplumber.service || true
+    systemctl mask powerstation.service inputplumber.service
+
+    if [[ ":Jupiter:" =~ ":$SYS_ID:" ]]; then
+      RESOLUTION=$(lshw -json -c display 2>/dev/null | jq -r '.[].configuration.resolution' 2>/dev/null)
+      if [[ "${RESOLUTION}" == "1200,1920" ]]; then
+        echo "Jupiter with DeckHD detected, disabling BIOS updates"
+        systemctl disable --now jupiter-biosupdate.service
+      elif [[ "$(awk '/MemTotal/{print $(NF-1)}' /proc/meminfo)" == "31664740" ]]; then
+        echo "Jupiter with 32GB RAM detected, disabling BIOS updates"
+        systemctl disable --now jupiter-biosupdate.service
+      fi
+    fi
+
+    systemctl enable --now jupiter-fan-control.service
+    systemctl enable --now vpower.service
+  else
+    echo "Non-Valve handheld or HTPC detected: enabling powerstation and inputplumber"
+    systemctl unmask powerstation.service inputplumber.service
+    systemctl enable --now powerstation.service inputplumber.service
+    systemctl disable --now jupiter-fan-control.service vpower.service \
+      jupiter-biosupdate.service jupiter-controller-update.service || true
+  fi
+else
+  echo "Not a handheld: unmasking tuned and PPD, masking powerstation"
+  systemctl unmask tuned.service tuned-ppd.service
+  systemctl unmask inputplumber.service
+  systemctl enable --now inputplumber.service
+  systemctl stop powerstation.service || true
+  systemctl mask powerstation.service
+  systemctl disable --now jupiter-fan-control.service vpower.service \
+    jupiter-biosupdate.service jupiter-controller-update.service || true
+fi
+
+# ZRAM: keep 1% of RAM free
+MINIMUM_FREE=$(awk '/MemTotal/ {printf "%.0f", $2 * 0.01}' /proc/meminfo)
+CURRENT_FREE=$(sysctl -n vm.min_free_kbytes)
+if (( MINIMUM_FREE > CURRENT_FREE )); then
+  sysctl -w "vm.min_free_kbytes=${MINIMUM_FREE}"
+fi
+
+if (( ${#NEEDED_KARGS[@]} > 0 )); then
+  echo "Applying karg changes: ${NEEDED_KARGS[*]}"
+  plymouth display-message --text="Preparing System - Please wait, this may take a while" || true
+  rpm-ostree kargs "${NEEDED_KARGS[@]}" || exit 1
+  SHOULD_REBOOT=true
+fi
+
+# Write the state only after all steps are successful, so a failed step runs again
+mkdir -p "$STATE_DIR"
+echo "$HWS_VER" > "$HWS_VER_FILE"
+echo "$SYS_ID" > "$SYS_ID_FILE"
+
+if [[ "$SHOULD_REBOOT" == true ]]; then
+  echo "Rebooting to apply karg changes"
+  systemctl reboot
+fi

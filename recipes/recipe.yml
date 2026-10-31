@@ -1,45 +1,173 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
 name: silverblue-deck
-# description will be included in the image's metadata
-description: This is my personal OS image.
+description: Custom Silverblue image forked from birdietx/silverblue with steam, gamescope and minimal tooling installed for gaming on Linux for htpc and handheld use.
+base-image: ghcr.io/birdietx/silverblue
+image-version: latest
 
-# the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: latest # You can pin to a specific version of Fedora as well
-
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
+  - type: dnf
+    repos:
+      enable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - terra
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        enable:
+          - ublue-os/bazzite
+          - ublue-os/bazzite-multilib
+          - ublue-os/packages
+          - ublue-os/staging
+    install:
+      packages:
+        - terra-release-extras
+
+  - type: script
+    scripts:
+      repos.sh
+
+  - type: dnf
+    replace:
+      - from-repo: terra-extras
+        packages:
+          - old: upower
+            new: terra-upower
+          - old: wireplumber
+            new: terra-wireplumber
+          - old: xorg-x11-server-Xwayland
+            new: terra-xorg-x11-server-Xwayland
+          - old: uresourced
+            new: uresourced-dmemcg
+
+  - type: dnf
+    install:
+      packages:
+        - acpica-tools
+        - acpid
+        - dbus-x11
+        - dmemcg-booster
+        - evtest
+        - galileo-mura
+        - gamescope-session-ogui-steam
+        - hid-replay
+        - inputplumber
+        - jq
+        - jupiter-fan-control
+        - jupiter-hw-support-btrfs
+        - lshw
+        - newt
+        - powerbuttond
+        - python-crcmod
+        - python-vdf
+        - qt6-qtvirtualkeyboard
+        - socat
+        - scx-scheds
+        - scx-tools
+        - sddm
+        - steam
+        - steam-notif-daemon
+        - steamdeck-dsp
+        - steamos-manager-powerstation
+        - terra-gamescope
+        - terra-gamescope-libs
+        - terra-mangohud
+        - vpower
+        - xorg-x11-server-Xvfb
+        - xrandr
+        - zenity
+        - zstd
+
   - type: files
     files:
       - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+        destination: /
 
-  - type: dnf
-    repos:
-      copr:
-        - atim/starship
-    install:
-      packages:
-        - micro
-        - starship
-    remove:
-      packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
-        - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+  - type: script
+    scripts:
+      deck.sh
+
+  - type: systemd
+    system:
+      enabled:
+        - bluebird-autologin.service
+        - bluebird-hardware-setup.service
+        - dmemcg-booster-system.service
+        - inputplumber.service
+        - pipewire-workaround.service
+        - pipewire-sysconf.service
+        - sddm.service
+        - steamos-manager.service
+        - wireplumber-sysconf.service
+        - wireplumber-workaround.service
+      disabled:
+        - acpid.service
+        - gdm.service
+        - jupiter-biosupdate.service
+        - jupiter-controller-update.service
+        - jupiter-fan-control.service
+        - powerstation.service
+        - scx_loader.service
+        - vpower.service
+    user:
+      enabled:
+        - dmemcg-booster-user.service
+        - steamos-manager.service
+        - steamos-manager-configure-cecd.service
+        - steamos-manager-session-cleanup.service
+        - steamos-powerbuttond.service
 
   - type: default-flatpaks
     configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
+      - notify: false
         scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
+        install:
+          - com.brave.Browser
+          - com.github.neithern.g4music
+          - com.github.tchx84.Flatseal
+          - com.mattjakeman.ExtensionManager
+          - com.saivert.pwvucontrol
+          - com.vixalien.sticky
+          - io.missioncenter.MissionCenter
+          - org.gnome.baobab
+          - org.gnome.Calculator
+          - org.gnome.Calendar
+          - org.gnome.Characters
+          - org.gnome.clocks
+          - org.gnome.Decibels
+          - org.gnome.font-viewer
+          - org.gnome.Logs
           - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
+          - org.gnome.Papers
+          - org.gnome.Showtime
+          - org.gnome.SimpleScan
+          - org.gnome.Snapshot
+          - org.gnome.TextEditor
+          - org.gnome.Weather
+          - org.libreoffice.LibreOffice
 
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+  - type: dnf
+    repos:
+      disable:
+        - fedora
+        - fedora-cisco-openh264
+        - fedora-multimedia
+        - terra
+        - terra-extras
+        - terra-mesa
+        - updates
+        - updates-archive
+      copr:
+        disable:
+          - ublue-os/bazzite
+          - ublue-os/bazzite-multilib
+          - ublue-os/packages
+          - ublue-os/staging
+  - type: script
+    scripts:
+      post.sh
+
+  - type: signing

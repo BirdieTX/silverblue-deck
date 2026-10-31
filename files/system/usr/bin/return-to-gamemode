@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+# Return from the GNOME desktop to Gaming Mode.
+set -e
+steamosctl switch-to-game-mode

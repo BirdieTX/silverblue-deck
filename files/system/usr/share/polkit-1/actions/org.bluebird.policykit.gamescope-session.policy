@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<!-- Adapted from Bazzite (Apache-2.0). Bluebird keeps the BIOS update and session select helpers only. -->
+<policyconfig>
+
+  <vendor>Bluebird</vendor>
+
+  <action id="org.bluebird.policykit.gamescope-session.pkexec.os-biosupdate">
+    <description>Run the jupiter bios update helper</description>
+    <icon_name>package-x-generic</icon_name>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/os-biosupdate</annotate>
+  </action>
+
+  <action id="org.bluebird.policykit.gamescope-session.pkexec.os-session-select">
+    <description>Helper to switch sessions</description>
+    <icon_name>package-x-generic</icon_name>
+    <defaults>
+      <allow_any>yes</allow_any>
+      <allow_inactive>yes</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/os-session-select</annotate>
+  </action>
+</policyconfig>

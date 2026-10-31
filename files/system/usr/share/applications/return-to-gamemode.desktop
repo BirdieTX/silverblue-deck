@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Return to Gaming Mode
+Comment=Log out of the desktop and start Steam Gaming Mode
+Exec=/usr/bin/return-to-gamemode
+Icon=steam
+Terminal=false
+Categories=Game;

@@ -1,0 +1,10 @@
+[Unit]
+Description=Set the SDDM autologin user and session
+Before=display-manager.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/bluebird-autologin
+
+[Install]
+WantedBy=multi-user.target
