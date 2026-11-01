@@ -48,6 +48,8 @@ modules:
 
   - type: dnf
     install:
+      exclude:
+        - mangohud
       packages:
         - acpica-tools
         - acpid
