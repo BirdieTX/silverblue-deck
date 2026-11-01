@@ -156,6 +156,24 @@ modules:
           - org.gnome.Weather
           - org.libreoffice.LibreOffice
 
+  - type: script
+    scripts:
+      - post.sh
+
+  - type: brew
+    auto-update: true
+    auto-upgrade: true
+    brew-analytics: false
+    update-interval: 7d
+    update-wait-after-boot: 10m
+    upgrade-interval: 7d
+    upgrade-wait-after-boot: 30m
+
+  - type: files
+    files:
+      - source: post
+        destination: /
+
   - type: dnf
     repos:
       disable:
@@ -174,13 +192,9 @@ modules:
           - ublue-os/packages
           - ublue-os/staging
 
-  - type: script
-    scripts:
-      - post.sh
-
-  - type: files
-    files:
-      - source: post
-        destination: /
+  - type: os-release
+    properties:
+      PRETTY_NAME: "Fedora Linux 44 (Silverblue)"
+      VERSION_CODENAME: "Bluebird Deck"
 
   - type: signing
