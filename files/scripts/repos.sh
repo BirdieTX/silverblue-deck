@@ -19,7 +19,7 @@ dnf5 config-manager setopt \
     copr:copr.fedorainfracloud.org:ublue-os:bazzite-multilib.priority=88 \
     copr:copr.fedorainfracloud.org:ublue-os:staging.exclude="scx-tools scx-scheds mesa* mutter*" \
     copr:copr.fedorainfracloud.org:ycollet:audinux.exclude="kernel*" \
-    fedora-multimedia.exclude="mesa-* *xone* steam" \
+    fedora-multimedia.exclude="mesa-* *xone* steam steam-arch-transition" \
     terra.exclude="scx-tools scx-scheds" \
     terra-extras.exclude="scx-tools scx-scheds" \
     terra-mesa.exclude="scx-tools scx-scheds"
