@@ -11,9 +11,9 @@ dnf5 config-manager setopt \
     copr:copr.fedorainfracloud.org:ycollet:audinux.name='Audinux' \
     copr:copr.fedorainfracloud.org:ycollet:audinux.priority=119 \
     copr:copr.fedorainfracloud.org:ublue-os:staging.priority=108 \
-    terra.priority=89 \
-    terra-extras.priority=88 \
-    fedora-multimedia.priority=87 \
-    terra-mesa.priority=86 \
-    copr:copr.fedorainfracloud.org:ublue-os:bazzite.priority=79 \
-    copr:copr.fedorainfracloud.org:ublue-os:bazzite-multilib.priority=78
+    terra.priority=79 \
+    terra-extras.priority=78 \
+    fedora-multimedia.priority=77 \
+    terra-mesa.priority=76 \
+    copr:copr.fedorainfracloud.org:ublue-os:bazzite.priority=89 \
+    copr:copr.fedorainfracloud.org:ublue-os:bazzite-multilib.priority=88
