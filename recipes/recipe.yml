@@ -6,6 +6,10 @@ base-image: ghcr.io/birdietx/silverblue
 image-version: latest
 
 modules:
+  - type: gnome-extensions
+    uninstall:
+      - Logo Menu
+
   - type: dnf
     repos:
       enable:
@@ -58,6 +62,7 @@ modules:
         - evtest
         - galileo-mura
         - gamescope-session-ogui-steam
+        - gnome-shell-extension-bazzite-menu
         - hid-replay
         - inputplumber
         - jupiter-fan-control
