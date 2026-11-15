@@ -90,7 +90,6 @@ modules:
       packages:
         - cargo
         - cmatrix
-        - dbus-x11
         - decibels
         - dmemcg-booster
         - eza
@@ -98,11 +97,6 @@ modules:
         - fish
         - flatseal
         - g4music
-
-  - type: dnf
-    install:
-      packages:
-        - inputplumber
 
   - type: dnf
     install:
@@ -198,6 +192,11 @@ modules:
     install:
       packages:
         - steam
+
+  - type: dnf
+    install:
+      packages:
+        - inputplumber
 
   - type: dnf
     install:
