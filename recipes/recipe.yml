@@ -76,8 +76,6 @@ modules:
   - type: dnf
     install:
       packages:
-        - acpica-tools
-        - acpid
         - alacritty
         - arimo-nerd-fonts
         - baobab
@@ -95,7 +93,6 @@ modules:
         - dbus-x11
         - decibels
         - dmemcg-booster
-        - evtest
         - eza
         - fastfetch
         - fish
@@ -144,8 +141,6 @@ modules:
         - inputplumber
         - jetbrains-mono-fonts-all
         - jetbrainsmono-nerd-fonts
-        - jupiter-fan-control
-        - jupiter-hw-support-btrfs
         - kf6-kirigami-addons
 
   # 227 MiB
@@ -165,34 +160,24 @@ modules:
       packages:
         - plasma-breeze
         - powerbuttond
-        - python-crcmod
-        - python-vdf
         - qt6-qtvirtualkeyboard
         - qt5ct
         - qt6ct
         - rar
         - rsms-inter-fonts
         - rsms-inter-vf-fonts
-        - rust
-        - scx-scheds
-        - scx-tools
         - sddm
         - setroubleshoot
         - showtime
         - signal-cli
         - simple-scan
         - snapshot
-        - socat
         - starship
         - terminus-fonts
         - terminus-fonts-console
         - vim-default-editor
-        - vpower
-        - xorg-x11-server-Xvfb
-        - xrandr
         - yazi
         - yt-dlp
-        - zenity
         - zsh
         - zsh-autocomplete
         - zsh-autosuggestions
@@ -206,18 +191,36 @@ modules:
       packages:
         - steam
 
+  - type: dnf
+    install:
+      packages:
+        - acpica-tools
+        - acpid
+        - evtest
+
   # 1 GiB
   - type: dnf
     install:
       packages:
         - galileo-mura
+        - jupiter-fan-control
+        - jupiter-hw-support-btrfs
         - steam-notif-daemon
         - steamdeck-dsp
         - steamos-manager-powerstation
         - terra-gamescope
         - terra-mangohud
-      exclude:
-        - mangohud
+
+  - type: dnf
+    install:
+      packages:
+        - python-vdf
+        - scx-scheds
+        - scx-tools
+        - socat
+        - vpower
+        - xorg-x11-server-Xvfb
+        - xrandr
 
   - type: files
     files:
