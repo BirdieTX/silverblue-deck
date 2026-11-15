@@ -3,7 +3,7 @@
 name: silverblue-deck
 description: Custom Silverblue image forked from birdietx/silverblue with steam, gamescope and minimal tooling installed for gaming on Linux for htpc and handheld use.
 base-image: ghcr.io/blue-build/base-images/fedora-silverblue
-image-version: latest
+image-version: 44
 
 modules:
 
