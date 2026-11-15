@@ -98,16 +98,16 @@ modules:
         - fish
         - flatseal
         - g4music
-
-  # 685 MiB
-  - type: dnf
-    install:
-      packages:
         - google-arimo-fonts
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
+
+  # 685 MiB
+  - type: dnf
+    install:
+      packages:
         - google-noto-serif-cjk-fonts
         - google-roboto-fonts
         - google-roboto-mono-fonts
@@ -139,13 +139,13 @@ modules:
         - HandBrake-cli
         - hid-replay
         - jetbrains-mono-fonts-all
+        - jetbrainsmono-nerd-fonts
+        - kf6-kirigami-addons
 
   # 555 MiB
   - type: dnf
     install:
       packages:
-        - jetbrainsmono-nerd-fonts
-        - kf6-kirigami-addons
         - loupe
         - material-icons-fonts
         - mc
