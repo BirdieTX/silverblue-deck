@@ -132,42 +132,13 @@ modules:
       - notify: false
         scope: system
         install:
-          - com.brave.Browser
-          - com.github.neithern.g4music
-          - com.github.tchx84.Flatseal
           - com.mattjakeman.ExtensionManager
           - com.saivert.pwvucontrol
           - com.vixalien.sticky
-          - io.missioncenter.MissionCenter
-          - org.gnome.baobab
-          - org.gnome.Calculator
-          - org.gnome.Calendar
-          - org.gnome.Characters
-          - org.gnome.clocks
-          - org.gnome.Decibels
-          - org.gnome.font-viewer
-          - org.gnome.Logs
-          - org.gnome.Loupe
-          - org.gnome.Papers
-          - org.gnome.Showtime
-          - org.gnome.SimpleScan
-          - org.gnome.Snapshot
-          - org.gnome.TextEditor
-          - org.gnome.Weather
-          - org.libreoffice.LibreOffice
 
   - type: script
     scripts:
       - post.sh
-
-  - type: brew
-    auto-update: true
-    auto-upgrade: true
-    brew-analytics: false
-    update-interval: 7d
-    update-wait-after-boot: 10m
-    upgrade-interval: 7d
-    upgrade-wait-after-boot: 30m
 
   - type: files
     files:
