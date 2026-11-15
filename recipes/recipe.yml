@@ -84,7 +84,7 @@ modules:
         - brave-browser
         - btop
 
-  # 483 MiB
+  # 919 MiB
   - type: dnf
     install:
       packages:
@@ -104,7 +104,7 @@ modules:
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
 
-  # 685 MiB
+  # 572 MiB
   - type: dnf
     install:
       packages:
@@ -141,11 +141,6 @@ modules:
         - jetbrains-mono-fonts-all
         - jetbrainsmono-nerd-fonts
         - kf6-kirigami-addons
-
-  # 555 MiB
-  - type: dnf
-    install:
-      packages:
         - loupe
         - material-icons-fonts
         - mc
@@ -156,6 +151,11 @@ modules:
         - powerbuttond
         - python-vdf
         - qt6-qtvirtualkeyboard
+
+  # 555 MiB
+  - type: dnf
+    install:
+      packages:
         - qt5ct
         - qt6ct
         - rar
@@ -166,16 +166,16 @@ modules:
         - sddm
         - setroubleshoot
         - showtime
-
-  # 772 MiB
-  - type: dnf
-    install:
-      packages:
         - signal-cli
         - simple-scan
         - snapshot
         - socat
         - starship
+
+  # 772 MiB
+  - type: dnf
+    install:
+      packages:
         - terminus-fonts
         - terminus-fonts-console
         - vim-default-editor
