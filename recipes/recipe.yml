@@ -139,13 +139,13 @@ modules:
         - HandBrake-cli
         - hid-replay
         - jetbrains-mono-fonts-all
-        - jetbrainsmono-nerd-fonts
-        - kf6-kirigami-addons
 
   # 555 MiB
   - type: dnf
     install:
       packages:
+        - jetbrainsmono-nerd-fonts
+        - kf6-kirigami-addons
         - loupe
         - material-icons-fonts
         - mc
