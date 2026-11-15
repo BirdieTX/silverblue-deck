@@ -99,7 +99,7 @@ modules:
         - flatseal
         - g4music
 
-  # 1 GiB
+  # 682 MiB
   - type: dnf
     install:
       packages:
@@ -136,13 +136,13 @@ modules:
         - gnome-sudoku
         - gnome-text-editor
         - gnome-weather
+        - HandBrake-cli
+        - hid-replay
 
-  # 227 MiB
+  # 555 MiB
   - type: dnf
     install:
       packages:
-        - HandBrake-cli
-        - hid-replay
         - jetbrains-mono-fonts-all
         - jetbrainsmono-nerd-fonts
         - kf6-kirigami-addons
@@ -152,17 +152,17 @@ modules:
         - mission-center
         - papers
         - papirus-icon-theme
-
-  # 772 MiB
-  - type: dnf
-    install:
-      packages:
         - plasma-breeze
         - powerbuttond
         - python-vdf
         - qt6-qtvirtualkeyboard
         - qt5ct
         - qt6ct
+
+  # 772 MiB
+  - type: dnf
+    install:
+      packages:
         - rar
         - rsms-inter-fonts
         - rsms-inter-vf-fonts
