@@ -208,8 +208,9 @@ modules:
         - steam-notif-daemon
         - steamdeck-dsp
         - steamos-manager-powerstation
-        - terra-gamescope
         - terra-mangohud
+      exclude:
+      - mangohud
 
   - type: dnf
     install:
