@@ -112,8 +112,6 @@ modules:
         - google-go-fonts
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
-      exclude:
-        - mangohud
 
   # 833 MiB
   - type: dnf
@@ -156,7 +154,7 @@ modules:
         - jupiter-hw-support-btrfs
         - kf6-kirigami-addons
       exclude:
-        - mangohud
+        - inputplumber-nightly
 
   # 970 MiB
   - type: dnf
