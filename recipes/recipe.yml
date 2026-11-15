@@ -141,12 +141,12 @@ modules:
         - jetbrains-mono-fonts-all
         - jetbrainsmono-nerd-fonts
         - kf6-kirigami-addons
-        - loupe
 
   # 555 MiB
   - type: dnf
     install:
       packages:
+        - loupe
         - material-icons-fonts
         - mc
         - mission-center
