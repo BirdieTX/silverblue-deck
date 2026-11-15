@@ -1,0 +1,22 @@
+[font]
+size = 12.0
+
+[font.normal]
+family = "JetBrainsMonoNL Nerd Font"
+
+[font.bold]
+family = "JetBrainsMonoNL Nerd Font"
+
+[font.italic]
+family = "JetBrainsMonoNL Nerd Font"
+
+[font.bold_italic]
+family = "JetBrainsMonoNL Nerd Font"
+
+[terminal]
+shell = "/bin/zsh"
+
+[window]
+decorations_theme_variant = "Dark"
+dimensions = { columns = 100, lines = 25 }
+opacity = 0.7

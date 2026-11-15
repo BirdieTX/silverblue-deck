@@ -1,0 +1,24 @@
+[Desktop Entry]
+Name[ka]=Pipewire Control Center
+Name[nb]=Pipewire Control Center
+Name[nl]=Pipewire Control Center
+Name[pl]=Pipewire Control Center
+Name[ru]=Pipewire Control Center
+Name=Pipewire Control Center
+GenericName[fr]=Controle des volumes PipeWire
+GenericName[ka]=Pipewire-ის ხმის კონტროლი
+GenericName[nb]=Pipewire volumkontroll
+GenericName[nl]=Pipewire-volumebediening
+GenericName[pl]=Kontrola głośności Pipewire
+GenericName[ru]=Управление громкостью pipewire
+GenericName=Pipewire Volume Control
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=pwvucontrol com.saivert.pwvucontrol
+Icon=com.saivert.pwvucontrol
+Terminal=false
+Type=Application
+Categories=Audio;System
+Keywords[nb]=PipeWire;Volume;Audio;Mixer;Kontroll;Lyd
+Keywords[ru]=PipeWire;Громкость;Аудио;Микшер;Управление;Звук
+Keywords=PipeWire;Volume;Audio;Mixer;Control;Sound
+StartupNotify=true
+X-Flatpak=com.saivert.pwvucontrol

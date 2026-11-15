@@ -1,0 +1,103 @@
+[org.gnome.desktop.interface]
+cursor-theme='Bibata-Modern-Classic'
+clock-format='24h'
+clock-show-weekday=true
+color-scheme='prefer-dark'
+enable-hot-corners=false
+font-name='Arimo Nerd Font 12'
+icon-theme='Papirus-Dark'
+monospace-font-name='JetBrainsMono Nerd Font 12'
+
+[org.gnome.desktop.wm.keybindings]
+close=['<Shift><Super>q', '<Alt>F4']
+maximize=['<Super>f']
+minimize=['<Super>q']
+move-to-workspace-1=['<Shift><Super>1']
+move-to-workspace-2=['<Shift><Super>2']
+move-to-workspace-3=['<Shift><Super>3']
+move-to-workspace-4=['<Shift><Super>4']
+move-to-workspace-5=['<Shift><Super>5']
+move-to-workspace-6=['<Shift><Super>6']
+move-to-workspace-7=['<Shift><Super>7']
+move-to-workspace-8=['<Shift><Super>8']
+move-to-workspace-9=['<Shift><Super>9']
+move-to-workspace-10=['<Shift><Super>0']
+panel-run-dialog=['<Shift><Super>r']
+switch-input-source=@as []
+switch-input-source-backward=@as []
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+switch-to-workspace-5=['<Super>5']
+switch-to-workspace-6=['<Super>6']
+switch-to-workspace-7=['<Super>7']
+switch-to-workspace-8=['<Super>8']
+switch-to-workspace-9=['<Super>9']
+switch-to-workspace-10=['<Super>0']
+toggle-fullscreen=['<Shift><Super>f']
+toggle-on-all-workspaces=['<Shift><Super>w']
+
+[org.gnome.desktop.wm.preferences]
+button-layout='appmenu:minimize,maximize,close'
+resize-with-right-button=true
+
+[org.gnome.mutter]
+edge-tiling=false
+
+[org.gnome.mutter.keybindings]
+switch-monitor=['XF86Display']
+
+[org.gnome.shell]
+always-show-log-out=true
+disable-extension-version-validation=true
+disable-user-extensions=false
+
+[org.gnome.shell.keybindings]
+focus-active-notification=['<Shift><Super>n']
+screenshot=['Print']
+show-screenshot-ui=['<Shift><Super>s']
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+switch-to-application-4=@as []
+switch-to-application-5=@as []
+switch-to-application-6=@as []
+switch-to-application-7=@as []
+switch-to-application-8=@as []
+switch-to-application-9=@as []
+toggle-message-tray=['<Super>n']
+toggle-overview=['<Super>w']
+
+[org.gnome.shell.extensions.blur-my-shell]
+pipelines={'pipeline_default': {'name': <'Default'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000000'>, 'params': <{'radius': <30>, 'brightness': <0.29999999999999999>}>}>]>}, 'pipeline_default_rounded': {'name': <'Default rounded'>, 'effects': <[<{'type': <'native_static_gaussian_blur'>, 'id': <'effect_000000000001'>, 'params': <{'radius': <30>, 'brightness': <0.29999999999999999>}>}>, <{'type': <'corner'>, 'id': <'effect_000000000002'>, 'params': <{'radius': <24>}>}>]>}}
+
+[org.gnome.shell.extensions.blur-my-shell.applications]
+blur=true
+dynamic-opacity=false
+opacity=230
+
+[org.gnome.shell.extensions.blur-my-shell.appfolder]
+brightness=0.3
+
+[org.gnome.shell.extensions.dash-to-dock]
+dash-max-icon-size=56
+hot-keys=false
+
+[org.gnome.shell.extensions.just-perfection]
+animation=5
+max-displayed-search-results=40
+panel-in-overview=true
+workspace=true
+workspace-switcher-should-show=true
+
+[org.gnome.shell.extensions.logo-menu]
+hide-forcequit=true
+menu-button-extensions-app='com.mattjakeman.ExtensionManager.desktop'
+menu-button-icon-image=1
+menu-button-icon-size=22
+menu-button-system-monitor='missioncenter'
+menu-button-terminal='alacritty'
+show-lockscreen=true
+show-power-options=true
+symbolic-icon=true

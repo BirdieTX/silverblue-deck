@@ -1,0 +1,11 @@
+[Unit]
+Description=Installs grub configuration file.
+After=local-fs.target
+ConditionPathExists=/boot/grub2/grub.cfg
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cp -f /etc/default/grub/user.cfg /boot/grub2/user.cfg
+
+[Install]
+WantedBy=multi-user.target

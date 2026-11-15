@@ -1,0 +1,76 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "small",
+    "padding": {
+      "top": 1,
+    },
+  },
+  "display": {
+    "separator": " ",
+  },
+  "modules": [
+    {
+      "key": "Distro     ==>",
+      "type": "os",
+      "format": "{2}",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "Kernel     ==>",
+      "type": "kernel",
+      "format": "{2}",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "Desktop   󰧨 ==>",
+      "type": "de",
+      "format": "{2}",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "Packages  󰏖 ==>",
+      "type": "packages",
+      "format": "{53}",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "Processes  ==>",
+      "type": "processes",
+      "format": "{1}",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "Uptime    󰅐 ==>",
+      "type": "uptime",
+      "format": "{2}h {3}min",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "CPU       󰻠 ==>",
+      "type": "cpu",
+      "format": "{1}",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "iGPU      󰍛 ==>",
+      "type": "gpu",
+      "format": "{2}",
+      "hideType": "discrete",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "dGPU      󰢮 ==>",
+      "type": "gpu",
+      "format": "{2}",
+      "hideType": "integrated",
+      "keyColor": "cyan",
+    },
+    {
+      "key": "RAM        ==>",
+      "type": "memory",
+      "format": "{1}/{2} {3}",
+      "keyColor": "cyan",
+    },
+  ],
+}

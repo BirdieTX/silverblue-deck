@@ -1,0 +1,10 @@
+[org/gnome/shell/extensions/ding]
+show-home=false
+show-trash=false
+show-volumes=false
+
+[org/gnome/shell/extensions/blur-my-shell]
+rounded-blur-found=true
+
+[org/x/apps/portal]
+color-scheme='prefer-dark'

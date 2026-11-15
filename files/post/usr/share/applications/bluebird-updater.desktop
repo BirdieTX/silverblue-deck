@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Check for Updates
+Type=Application
+Icon=system-software-update
+Terminal=false
+Exec=alacritty -e /usr/bin/bluebird-update.sh

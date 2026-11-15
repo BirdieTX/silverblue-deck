@@ -1,0 +1,10 @@
+[Unit]
+Description=Check if the weekly update is due
+
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=1h
+OnCalendar=Fri *-*-* 23:00:00
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Background update
+ConditionPathExists=/run/ostree-booted
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+StateDirectory=bluebird
+ExecCondition=/usr/libexec/bluebird-update-due
+ExecStartPre=/usr/bin/nm-online -q --timeout=300
+ExecStart=/usr/bin/bootc upgrade --quiet
+ExecStartPost=/usr/bin/touch /var/lib/bluebird/last-update
+Nice=19
+IOSchedulingClass=idle
