@@ -86,7 +86,7 @@ modules:
         - brave-browser
         - btop
 
-  # 918 MiB
+  # 483 MiB
   - type: dnf
     install:
       packages:
@@ -102,23 +102,24 @@ modules:
         - flatseal
         - g4music
 
+  # 1 GiB
   - type: dnf
     install:
       packages:
         - galileo-mura
         - gamescope-session-ogui-steam
+      exclude:
+        - inputplumber-nightly
+
+  # 665 MiB
+  - type: dnf
+    install:
+      packages:
         - google-arimo-fonts
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
-      exclude:
-        - inputplumber-nightly
-
-  # 833 MiB
-  - type: dnf
-    install:
-      packages:
         - google-noto-serif-cjk-fonts
         - google-roboto-fonts
         - google-roboto-mono-fonts
@@ -156,7 +157,7 @@ modules:
         - jupiter-hw-support-btrfs
         - kf6-kirigami-addons
 
-  # 970 MiB
+  # 227 MiB
   - type: dnf
     install:
       packages:
@@ -167,7 +168,7 @@ modules:
         - papers
         - papirus-icon-theme
 
-  # 534 MiB
+  # 824 MiB
   - type: dnf
     install:
       packages:
@@ -213,6 +214,8 @@ modules:
         - zsh-autosuggestions
         - zsh-html
         - zsh-syntax-highlighting
+      exclude:
+        - mangohud
 
   - type: files
     files:
