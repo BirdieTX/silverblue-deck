@@ -184,12 +184,6 @@ modules:
         - snapshot
         - socat
         - starship
-        - steam-notif-daemon
-        - steamdeck-dsp
-        - steamos-manager-powerstation
-        - terra-gamescope
-        - terra-gamescope-libs
-        - terra-mangohud
         - terminus-fonts
         - terminus-fonts-console
         - vim-default-editor
@@ -207,15 +201,23 @@ modules:
       exclude:
         - mangohud
 
+  - type: dnf
+    install:
+      packages:
+        - steam
+
   # 1 GiB
   - type: dnf
     install:
       packages:
         - galileo-mura
-        - gamescope-session-ogui-steam
-        - steam
+        - steam-notif-daemon
+        - steamdeck-dsp
+        - steamos-manager-powerstation
+        - terra-gamescope
+        - terra-mangohud
       exclude:
-        - inputplumber-nightly
+        - mangohud
 
   - type: files
     files:
