@@ -69,8 +69,6 @@ modules:
             allow-erasing: true
           - old: xorg-x11-server-Xwayland
             new: terra-xorg-x11-server-Xwayland
-          - old: uresourced
-            new: uresourced-dmemcg
 
   # 706 MiB
   - type: dnf
@@ -101,7 +99,7 @@ modules:
         - flatseal
         - g4music
 
-  # 665 MiB
+  # 1 GiB
   - type: dnf
     install:
       packages:
@@ -138,15 +136,16 @@ modules:
         - gnome-sudoku
         - gnome-text-editor
         - gnome-weather
-        - HandBrake-cli
-        - jetbrains-mono-fonts-all
-        - jetbrainsmono-nerd-fonts
-        - kf6-kirigami-addons
 
   # 227 MiB
   - type: dnf
     install:
       packages:
+        - HandBrake-cli
+        - hid-replay
+        - jetbrains-mono-fonts-all
+        - jetbrainsmono-nerd-fonts
+        - kf6-kirigami-addons
         - loupe
         - material-icons-fonts
         - mc
@@ -154,7 +153,7 @@ modules:
         - papers
         - papirus-icon-theme
 
-  # 824 MiB
+  # 772 MiB
   - type: dnf
     install:
       packages:
@@ -191,12 +190,13 @@ modules:
         - zsh-html
         - zsh-syntax-highlighting
 
+  # 756 MiB
   - type: dnf
     install:
       packages:
         - steam
 
-  # 1 GiB
+  # 405 MiB
   - type: dnf
     install:
       packages:
@@ -210,11 +210,6 @@ modules:
         - terra-mangohud
       exclude:
         - mangohud
-
-  - type: dnf
-    install:
-      packages:
-        - hid-replay
 
   - type: files
     files:
