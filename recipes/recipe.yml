@@ -72,7 +72,7 @@ modules:
           - old: uresourced
             new: uresourced-dmemcg
 
-  # 703 MiB
+  # 706 MiB
   - type: dnf
     install:
       packages:
@@ -101,17 +101,19 @@ modules:
         - fish
         - flatseal
         - g4music
-        - galileo-mura
 
   - type: dnf
     install:
       packages:
+        - galileo-mura
         - gamescope-session-ogui-steam
         - google-arimo-fonts
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
+      exclude:
+        - inputplumber-nightly
 
   # 833 MiB
   - type: dnf
@@ -153,8 +155,6 @@ modules:
         - jupiter-fan-control
         - jupiter-hw-support-btrfs
         - kf6-kirigami-addons
-      exclude:
-        - inputplumber-nightly
 
   # 970 MiB
   - type: dnf
