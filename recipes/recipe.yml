@@ -76,6 +76,8 @@ modules:
   - type: dnf
     install:
       packages:
+        - acpica-tools
+        - acpid
         - alacritty
         - arimo-nerd-fonts
         - baobab
@@ -92,16 +94,12 @@ modules:
         - cmatrix
         - decibels
         - dmemcg-booster
+        - evtest
         - eza
         - fastfetch
         - fish
         - flatseal
         - g4music
-
-  - type: dnf
-    install:
-      packages:
-        - hid-replay
 
   # 665 MiB
   - type: dnf
@@ -162,22 +160,29 @@ modules:
       packages:
         - plasma-breeze
         - powerbuttond
+        - python-vdf
         - qt6-qtvirtualkeyboard
         - qt5ct
         - qt6ct
         - rar
         - rsms-inter-fonts
         - rsms-inter-vf-fonts
+        - scx-scheds
+        - scx-tools
         - sddm
         - setroubleshoot
         - showtime
         - signal-cli
         - simple-scan
         - snapshot
+        - socat
         - starship
         - terminus-fonts
         - terminus-fonts-console
         - vim-default-editor
+        - vpower
+        - xorg-x11-server-Xvfb
+        - xrandr
         - yazi
         - yt-dlp
         - zsh
@@ -185,8 +190,6 @@ modules:
         - zsh-autosuggestions
         - zsh-html
         - zsh-syntax-highlighting
-      exclude:
-        - mangohud
 
   - type: dnf
     install:
@@ -196,20 +199,13 @@ modules:
   - type: dnf
     install:
       packages:
-        - inputplumber
-
-  - type: dnf
-    install:
-      packages:
-        - acpica-tools
-        - acpid
-        - evtest
 
   # 1 GiB
   - type: dnf
     install:
       packages:
         - galileo-mura
+        - inputplumber
         - jupiter-fan-control
         - jupiter-hw-support-btrfs
         - steam-notif-daemon
@@ -222,13 +218,7 @@ modules:
   - type: dnf
     install:
       packages:
-        - python-vdf
-        - scx-scheds
-        - scx-tools
-        - socat
-        - vpower
-        - xorg-x11-server-Xvfb
-        - xrandr
+        - hid-replay
 
   - type: files
     files:
