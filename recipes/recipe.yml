@@ -102,12 +102,18 @@ modules:
         - flatseal
         - g4music
         - galileo-mura
+
+  - type: dnf
+    install:
+      packages:
         - gamescope-session-ogui-steam
         - google-arimo-fonts
         - google-droid-fonts-all
         - google-go-fonts
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
+      exclude:
+        - mangohud
 
   # 833 MiB
   - type: dnf
@@ -149,6 +155,8 @@ modules:
         - jupiter-fan-control
         - jupiter-hw-support-btrfs
         - kf6-kirigami-addons
+      exclude:
+        - mangohud
 
   # 970 MiB
   - type: dnf
