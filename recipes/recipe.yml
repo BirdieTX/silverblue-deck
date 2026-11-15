@@ -99,6 +99,16 @@ modules:
         - flatseal
         - g4music
 
+  - type: dnf
+    install:
+      packages:
+        - inputplumber
+
+  - type: dnf
+    install:
+      packages:
+        - hid-replay
+
   # 665 MiB
   - type: dnf
     install:
@@ -137,8 +147,6 @@ modules:
         - gnome-text-editor
         - gnome-weather
         - HandBrake-cli
-        - hid-replay
-        - inputplumber
         - jetbrains-mono-fonts-all
         - jetbrainsmono-nerd-fonts
         - kf6-kirigami-addons
