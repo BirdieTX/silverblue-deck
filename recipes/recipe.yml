@@ -102,15 +102,6 @@ modules:
         - flatseal
         - g4music
 
-  # 1 GiB
-  - type: dnf
-    install:
-      packages:
-        - galileo-mura
-        - gamescope-session-ogui-steam
-      exclude:
-        - inputplumber-nightly
-
   # 665 MiB
   - type: dnf
     install:
@@ -193,7 +184,6 @@ modules:
         - snapshot
         - socat
         - starship
-        - steam
         - steam-notif-daemon
         - steamdeck-dsp
         - steamos-manager-powerstation
@@ -216,6 +206,16 @@ modules:
         - zsh-syntax-highlighting
       exclude:
         - mangohud
+
+  # 1 GiB
+  - type: dnf
+    install:
+      packages:
+        - galileo-mura
+        - gamescope-session-ogui-steam
+        - steam
+      exclude:
+        - inputplumber-nightly
 
   - type: files
     files:
