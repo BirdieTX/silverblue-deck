@@ -196,10 +196,6 @@ modules:
       packages:
         - steam
 
-  - type: dnf
-    install:
-      packages:
-
   # 1 GiB
   - type: dnf
     install:
@@ -213,7 +209,7 @@ modules:
         - steamos-manager-powerstation
         - terra-mangohud
       exclude:
-      - mangohud
+        - mangohud
 
   - type: dnf
     install:
