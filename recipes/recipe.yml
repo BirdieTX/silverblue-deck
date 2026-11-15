@@ -104,7 +104,7 @@ modules:
         - google-noto-fonts-all
         - google-noto-sans-hk-fonts
 
-  # 572 MiB
+  # 1 GiB
   - type: dnf
     install:
       packages:
@@ -147,15 +147,15 @@ modules:
         - mission-center
         - papers
         - papirus-icon-theme
+
+  # 430 MiB
+  - type: dnf
+    install:
+      packages:
         - plasma-breeze
         - powerbuttond
         - python-vdf
         - qt6-qtvirtualkeyboard
-
-  # 555 MiB
-  - type: dnf
-    install:
-      packages:
         - qt5ct
         - qt6ct
         - rar
@@ -171,11 +171,6 @@ modules:
         - snapshot
         - socat
         - starship
-
-  # 772 MiB
-  - type: dnf
-    install:
-      packages:
         - terminus-fonts
         - terminus-fonts-console
         - vim-default-editor
